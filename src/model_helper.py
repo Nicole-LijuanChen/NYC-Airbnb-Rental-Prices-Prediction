@@ -79,6 +79,37 @@ def rf_score_plot(randforest, X_train, y_train, X_test, y_test):
                                                         'Random Forest Test')
 
 
+def stage_score_plot(estimator, X_train, y_train, X_test, y_test):
+    '''
+        Parameters: estimator: GradientBoostingRegressor or AdaBoostRegressor
+                    X_train: 2d numpy array
+                    y_train: 1d numpy array
+                    X_test: 2d numpy array
+                    y_test: 1d numpy array
+
+        Returns: A plot of the number of iterations vs the MSE for the model for
+        both the training set and test set.
+    '''
+    estimator.fit(X_train, y_train)
+    name = estimator.__class__.__name__.replace('Regressor', '')
+    learn_rate = estimator.learning_rate
+    # initialize 
+    train_scores = np.zeros((estimator.n_estimators,), dtype=np.float64)
+    test_scores = np.zeros((estimator.n_estimators,), dtype=np.float64)
+    # Get train score from each boost
+    for i, y_train_pred in enumerate(estimator.staged_predict(X_train)):
+        train_scores[i] = mean_squared_error(y_train, y_train_pred)
+    # Get test score from each boost
+    for i, y_test_pred in enumerate(estimator.staged_predict(X_test)):
+        test_scores[i] = mean_squared_error(y_test, y_test_pred)
+    plt.plot(train_scores, alpha=.5, label="{0} Train - learning rate {1}".format(
+                                                                name, learn_rate))
+    plt.plot(test_scores, alpha=.5, label="{0} Test  - learning rate {1}".format(
+                                                      name, learn_rate), ls='--')
+    plt.title(name, fontsize=16, fontweight='bold')
+    plt.ylabel('MSE', fontsize=14)
+    plt.xlabel('Iterations', fontsize=14)
+
 
 
 
