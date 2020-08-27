@@ -13,7 +13,7 @@ import pandas as pd
 import numpy as np
 
 
-def load_and_split_data():
+def load_and_split_data(path):
     ''' Loads processed dataset and splits it into train:test datasets
         in a ratio of 75:25. Also sets the random_state for reproducible 
         results each time model is run.
@@ -23,7 +23,7 @@ def load_and_split_data():
         Returns:  (X_train, X_test, y_train, y_test):  tuple of numpy arrays
                   column_names: numpy array containing the feature names
     '''
-    df = pd.read_csv('data/processed_data.csv') #load processed dataset 
+    df = pd.read_csv(path) #load processed dataset 
     X = df.copy()
     y = X.pop('price')
     X_train, X_test, y_train, y_test = train_test_split(
@@ -79,6 +79,20 @@ def rf_score_plot(randforest, X_train, y_train, X_test, y_test):
                                                         'Random Forest Test')
 
 
+
+def rf_estimators_scores(num_estimator_list,X_train, y_train, X_test, y_test):
+    train_errors_rf = []
+    test_errors_rf = []
+    for num_est in num_estimator_list:
+        rf = RandomForestRegressor(n_estimators = num_est, n_jobs=-1)
+        rf.fit(X_train, y_train)
+        y_pred_test =  rf.predict(X_test)
+        y_pred_train =  rf.predict(X_train)
+    
+        train_errors_rf.append(mean_squared_error(y_pred_train, y_train)) 
+        test_errors_rf.append(mean_squared_error(y_pred_test, y_test))
+    return train_errors_rf,test_errors_rf
+
 def stage_score_plot(estimator, X_train, y_train, X_test, y_test):
     '''
         Parameters: estimator: GradientBoostingRegressor or AdaBoostRegressor
@@ -92,31 +106,84 @@ def stage_score_plot(estimator, X_train, y_train, X_test, y_test):
     '''
     estimator.fit(X_train, y_train)
     name = estimator.__class__.__name__.replace('Regressor', '')
-    learn_rate = estimator.learning_rate
+    max_depth = estimator.max_depth
     # initialize 
     train_scores = np.zeros((estimator.n_estimators,), dtype=np.float64)
     test_scores = np.zeros((estimator.n_estimators,), dtype=np.float64)
     # Get train score from each boost
-    for i, y_train_pred in enumerate(estimator.staged_predict(X_train)):
+    for i, y_train_pred in enumerate(estimator.predict(X_train)):
         train_scores[i] = mean_squared_error(y_train, y_train_pred)
     # Get test score from each boost
-    for i, y_test_pred in enumerate(estimator.staged_predict(X_test)):
+    for i, y_test_pred in enumerate(estimator.predict(X_test)):
         test_scores[i] = mean_squared_error(y_test, y_test_pred)
-    plt.plot(train_scores, alpha=.5, label="{0} Train - learning rate {1}".format(
-                                                                name, learn_rate))
-    plt.plot(test_scores, alpha=.5, label="{0} Test  - learning rate {1}".format(
-                                                      name, learn_rate), ls='--')
+    plt.plot(train_scores, alpha=.5, label="{0} Train - max_depth {1}".format(
+                                                                name, max_depth))
+    plt.plot(test_scores, alpha=.5, label="{0} Test  - max_depth {1}".format(
+                                                      name, max_depth), ls='--')
     plt.title(name, fontsize=16, fontweight='bold')
     plt.ylabel('MSE', fontsize=14)
     plt.xlabel('Iterations', fontsize=14)
+
+
+def gridsearch_with_output(estimator, parameter_grid, X_train, y_train):
+    '''
+        Parameters: estimator: the type of model (e.g. RandomForestRegressor())
+                    paramter_grid: dictionary defining the gridsearch parameters
+                    X_train: 2d numpy array
+                    y_train: 1d numpy array
+
+        Returns:  best parameters and model fit with those parameters
+    '''
+    model_gridsearch = GridSearchCV(estimator,
+                                    parameter_grid,
+                                    n_jobs=-1,
+                                    verbose=True,
+                                    scoring='neg_mean_squared_error')
+    model_gridsearch.fit(X_train, y_train)
+    best_params = model_gridsearch.best_params_ 
+    model_best = model_gridsearch.best_estimator_
+    print("\nResult of gridsearch:")
+    print("{0:<20s} | {1:<8s} | {2}".format("Parameter", "Optimal", "Gridsearch values"))
+    print("-" * 55)
+    for param, vals in parameter_grid.items():
+        print("{0:<20s} | {1:<8s} | {2}".format(str(param), 
+                                                str(best_params[param]),
+                                                str(vals)))
+    return best_params, model_best
+
+
+
+def display_default_and_gsearch_model_results(model_default, model_gridsearch, 
+                                              X_test, y_test):
+    '''
+        Parameters: model_default: fit model using initial parameters
+                    model_gridsearch: fit model using parameters from gridsearch
+                    X_test: 2d numpy array
+                    y_test: 1d numpy array
+        Return: None, but prints out mse and r2 for the default and model with
+                gridsearched parameters
+    '''
+    name = model_default.__class__.__name__.replace('Regressor', '') # for printing
+    y_test_pred = model_gridsearch.predict(X_test)
+    mse = mean_squared_error(y_test, y_test_pred)
+    r2 = r2_score(y_test, y_test_pred)
+    print("Results for {0}".format(name))
+    print("Gridsearched model mse: {0:0.3f} | r2: {1:0.3f}".format(mse, r2))
+    y_test_pred = model_default.predict(X_test)
+    mse = mean_squared_error(y_test, y_test_pred)
+    r2 = r2_score(y_test, y_test_pred)
+    print("     Default model mse: {0:0.3f} | r2: {1:0.3f}".format(mse, r2))
+
 
 
 
 
 if __name__ == '__main__':
     # 1) load and train-test-split data 
-    X_train, X_test, y_train, y_test = load_and_split_data()
+    path = '../data/processed_v2.csv'
+    X_train, X_test, y_train, y_test = load_and_split_data(path)
     print(f'X_train shape:  {X_train.shape}')
     print(f'y_train length: {len(y_train)}')
+    print(f'X_test shape:  {X_test.shape}')
     print(f'y_train + y_test length: {len(y_train)+len(y_test)}')
         
