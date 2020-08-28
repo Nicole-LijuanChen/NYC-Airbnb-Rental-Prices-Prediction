@@ -73,21 +73,34 @@ When linking section titles with spaces in between, you must use a '-' (dash) to
 
 ### Background & Motivation
 
-Since 2008, guests and hosts have used Airbnb to expand on traveling possibilities and present more unique, personalized way of experiencing the world. This dataset describes the listing activity and metrics in NYC, NY for 2019.
+Since 2008, guests and hosts have used Airbnb to expand on traveling possibilities and present more unique, personalized way of experiencing the world.
 
-Source: kaggle.com
+Airbnb is a great tool for making travel easier, more pleasant and less expensive. Rather than staying at a hotel and paying hotel prices, you can often pay substantially less for more space and usually have a better selection of locations in larger cities.
+
+
+When you are traveling and choosing a hotel, do you feel that there are too many choices and you don't know which listing is reasonable?
+When you set the rental price as a host, do you know which price will attract customers and be profitable?
+
+I would like to build a price prediction model to help guests and hosts compare and measure price.
+
 ### Goal
+
+#### Predict NYC Airbnb Rental Prices
 
 
 <!-- SECTION 1 -->
 ## EDA
 ### Raw data
-<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/raw_data.png'></img>
 
-This dataset has around 49,000 observations in it with 16 columns and it is a mix text, categorical and numeric values.
+<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/raw_data.png' width='800' height='auto'></img>
+
+ Source: kaggle.com
+ This dataset describes the listing activity and metrics in NYC, NY for 2019.
+ It has around 49,000 observations in it with 16 columns and it is a mix text, categorical and numeric values.
 
 Scan the data infomation:
-<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/data_info.png'></img>
+
+<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/data_info.png' width='800' height='auto'></img>
 
 ### Data understanding through visualizations
 #### Get some intuitive sense of the relationships between numeric feature variables and Price
@@ -153,7 +166,7 @@ Mean price by neighbourhood_group
     <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_counts.png" width="400"/>
 </center>
 
-#### There are just less than 0.5% listing's price is greater than $1,000
+#### There are just less than 0.5% listing price is greater than $1,000
 
 
 
@@ -201,7 +214,7 @@ The processed data:
 - Drop outliers
     - price:
         The mean of price is 152.72, but the max price is 10000 that is not a reasonal price for me. 
-        There are just less than 0.5% listing's price is greater than $1,000.
+        There are just less than 0.5% listing price is greater than $1,000.
         #### Drop the rows whose price is greater than 1000 and equal to 0
 
     - minimum_nights:
@@ -209,15 +222,16 @@ The processed data:
         Short-term stays means less than 30 nights at a time.
         #### Replace the df['minimum_nights'] >30 with 30
 - Drop low correlation columns
-    -latitude
-    -longitude
+    - latitude
+    - longitude
 - Convert text variable into numeric variables
-     name -> nema_length
+    - name -> neme_length
 - Look at correlations again
 ####    Before  VS  After
-<div align="center">
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v0.png" width="500"/><img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v1.png" width="500"/>
-<div>
+<center class="half">
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v0.png" width="600"/><img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v1.png" width="600"/>
+<center>
+
 
 
 - Evaluate models again
@@ -259,6 +273,7 @@ Feature Importances
 
 <!-- SECTION 5 -->
 ## Future Steps
+
 Next, I would like to search some related dataset, such as: the ratings, the reviews, numbers of booking. And then analyze the key fetures for customers to choose a listing.
 
 
