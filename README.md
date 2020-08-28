@@ -282,17 +282,13 @@ Feature Importance
 
 ### AS a host:
     - When you can't change the area where the house is, you could 
-    
-    increase the listing price by increasing the total numbers of 
-    
-    days listing is avaliable out of 365.
+      increase the listing price by increasing the total numbers of 
+       days listing is avaliable out of 365.
 
     - Also, you could reduce the required minimun nights.
     - Describe your house as specific as possible in the house name, 
-
-      which may help you attract customers. Such as room type, 
-      
-      neighborhood, business district name.
+       which may help you attract customers. Such as room type, 
+       neighborhood, business district name.
 
 
 
