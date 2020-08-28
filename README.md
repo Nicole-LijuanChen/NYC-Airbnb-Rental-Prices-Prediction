@@ -143,13 +143,13 @@ Shared room         1160
 
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/map_of_room_type.png?raw=true'></img>
 
-Mean price by neighbourhood_group  
+Mean price by room_type  
 
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/mean_price_by_room_type.png?raw=true'></img>
 
 #### Navigate "minimum_nights": required minimum nights stay
 <center class="half">
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/minimum_nights_distribution.png" width=300/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/minimum_nights_distribution.png" width="300"/>
     <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/min_nights_describe.png" width="300"/>
     <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/min_nights_counts.png" width="300"/>
 </center>
@@ -164,8 +164,8 @@ Mean price by neighbourhood_group
 <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_distribution.png" width='800' height='auto'/>
 
 <center class="half">
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_describe.png" width="400"/>
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_counts.png" width="400"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_describe.png" height="500"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_counts.png" height="500"/>
 </center>
 
 #### There are just less than 0.5% listing price is greater than $1,000
