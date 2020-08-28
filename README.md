@@ -42,13 +42,13 @@ When linking section titles with spaces in between, you must use a '-' (dash) to
 <!-- Section 1 -->
 - [EDA](#context)
     - [Raw data](#visualizations)
-    - [Data Analysis](#context)
+    - [Data understanding](#context)
 
 <!-- Section 2 -->
 - [Feature engineering](#visualizations)
 
 <!-- Section 3 -->
-- [Create model](#visualizations)
+- [Modeling](#visualizations)
     - [Choosing model](#visualizations)
     - [Feature engineering agian](#visualizations)
     - [Try best hyperparameters](#visualizations)
@@ -56,7 +56,7 @@ When linking section titles with spaces in between, you must use a '-' (dash) to
     - [Evaluate model](#visualizations)
 
 <!-- Section 4 -->
-- [Interpret model](#context)
+- [Bussiness insights](#context)
 
 <!-- Section 5 -->
 - [Future Steps](#context)
@@ -86,9 +86,10 @@ Source: kaggle.com
 
 This dataset has around 49,000 observations in it with 16 columns and it is a mix text, categorical and numeric values.
 
-Scan the data to determine what I need.
+Scan the data infomation:
+<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/data_info.png'></img>
 
-### Data Analysis
+### Data understanding through visualizations
 #### Get some intuitive sense of the relationships between numeric feature variables and Price
 
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/scatter_matrix.png?raw=true'></img>
@@ -114,10 +115,11 @@ Mean price by neighbourhood_group
 
 #### Navigate "neighbourhood": NYC neighbourhood
 <center class="half">
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/nbh_value_counts.png" width="300"/><img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/nbh_counts.png" width="300"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/nbh_value_counts.png" width="400"/><img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/nbh_counts.png" width="400"/>
 </center>
 
 #### Navigate "room_type": type of listing
+
 Count frequency: 
 
 Entire home/apt    25409; 
@@ -138,6 +140,7 @@ Mean price by neighbourhood_group
 </center>
 
 #### Navigate "name": listing name
+
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/name_wordcloud.png?raw=true'></img>
 
 
@@ -165,7 +168,13 @@ Mean price by neighbourhood_group
 <!-- SECTION 2 -->
 ## Feature engineering
 #### - Fill Nan values using the specified method.
+        According to data.info, there are 4 cloumns missing some values.
+        lname,host_name,last_review and reviews_per_month
+    
 #### - Convert categorical variable into numeric variables(0/1).
+        According to data understanding, there are 3 important categorical features:
+        neighbourhood_group,neighbourhood,room_type
+
 #### - Drop some columns that have a low correlation with "price".
      id, host_id, host_name ....
 
@@ -177,8 +186,8 @@ The processed data:
 
 
 <!-- SECTION 3 -->
-## Create model
-#### Choosing model
+## Modeling
+#### Define models
 - Try 4 regressor models
 
 <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/define_models.png" width='800' height='auto'></img>   
@@ -187,15 +196,27 @@ The processed data:
 - Evaluate models
 
 <img src=https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/evaluate_models_v0.png width='800' height='auto'></img>
+
 #### Feature engineering again
 - Drop outliers
+    - price:
+        The mean of price is 152.72, but the max price is 10000 that is not a reasonal price for me. 
+        There are just less than 0.5% listing's price is greater than $1,000.
+        #### Drop the rows whose price is greater than 1000 and equal to 0
+
+    - minimum_nights:
+        The minimum night stay policy on Airbnb is the minimum number of nights that a guest can book a short-term vacation rental. 
+        Short-term stays means less than 30 nights at a time.
+        #### Replace the df['minimum_nights'] >30 with 30
+- Drop low correlation columns
+    -latitude
+    -longitude
 - Convert text variable into numeric variables
      name -> nema_length
 - Look at correlations again
 ####    Before  VS  After
 <div align="center">
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v0.png" width="400"/>
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v1.png" width="400"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v0.png" width="500"/><img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v1.png" width="500"/>
 <div>
 
 
@@ -207,11 +228,11 @@ The models performaced have improved!!
 
 #### Try best hyperparameters
 
-<center class="half">
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Estimators.png" width="300"/>
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Trees.png" width="300"/>
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Features.png" width="300"/>
-</center>
+
+<img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Estimators.png" width="600"/>
+<img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Trees.png" width="600"/>
+<img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Features.png" width="600"/>
+
 
 #### create final model: Random Forest Regressor
 
@@ -224,7 +245,7 @@ The models performaced have improved!!
 
 <!-- SECTION 4 -->
 
-#### Interpret model
+#### Bussiness insights
 
 Feature Importances
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/top_10_feature_importances.png?raw=true' width='800' height='auto'></img>
@@ -238,7 +259,7 @@ Feature Importances
 
 <!-- SECTION 5 -->
 ## Future Steps
-Next, I would like to search some related dataset.
+Next, I would like to search some related dataset, such as: the ratings, the reviews, numbers of booking. And then analyze the key fetures for customers to choose a listing.
 
 
 
