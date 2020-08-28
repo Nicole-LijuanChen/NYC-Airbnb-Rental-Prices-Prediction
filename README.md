@@ -7,16 +7,6 @@
 </div>
 
 <!-- Put your badges here, either for fun or for information -->
-<div align="center">
-    <!-- Project Type -->
-    <img src="https://img.shields.io/badge/Project Type-Machine Learning-purple?style=flat-square">
-    <!-- Maintained? -->
-    <img src="https://img.shields.io/badge/Maintained%3F-IN PROG-blue?style=flat-square"></img>
-    <!-- License? (MIT is Standard, make sure you license your project via github) -->
-    <img src="https://img.shields.io/github/license/boogiedev/automotive-eda?style=flat-square">
-    <!-- Commit Activity? (Fill in the blanks) -->
-    <img src="https://img.shields.io/github/commit-activity/m/your_username/your_repo_name?style=flat-square">
-</div>
 
 </br>
 
@@ -109,6 +99,7 @@ According the scatter matrix, there is not a strong linear relationship between 
 
 #### Navigate "neighbourhood_group" : NYC borough
 
+Count frequency: 
 
 Manhattan        21661;    
 Brooklyn         20104;  
@@ -119,7 +110,7 @@ Staten Island      373
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/map_of_neighbourhood_group.png'></img>
 
 Mean price by neighbourhood_group              
-<img src='?raw=ture'></img>
+<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/mean_price_by_neighbourhood_group.png?raw=ture'></img>
 
 #### Navigate "neighbourhood": NYC neighbourhood
 <center class="half">
@@ -127,29 +118,30 @@ Mean price by neighbourhood_group
 </center>
 
 #### Navigate "room_type": type of listing
+Count frequency: 
 
 Entire home/apt    25409; 
 Private room       22326; 
 Shared room         1160
 
-Mean price by neighbourhood_group  
-
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/map_of_room_type.png?raw=true'></img>
+
+Mean price by neighbourhood_group  
 
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/mean_price_by_room_type.png?raw=true'></img>
 
 #### Navigate "minimum_nights": required minimum nights stay
 <center class="half">
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/minimum_nights_distribution.png" width="400"/>
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/min_nights_describe.png" width="400"/>
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/min_nights_counts.png" width="400"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/minimum_nights_distribution.png" width=300/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/min_nights_describe.png" width="300"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/min_nights_counts.png" width="300"/>
 </center>
 
 #### Navigate "name": listing name
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/name_wordcloud.png?raw=true'></img>
 
 
-Closer look at "price" : listing price
+#### Closer look at "price" : listing price
 
 <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_distribution.png" width='800' height='auto'/>
 
@@ -157,11 +149,6 @@ Closer look at "price" : listing price
     <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_describe.png" width="400"/>
     <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_counts.png" width="400"/>
 </center>
-
-     (df['price'] > 2000).sum()
-     >>> 86
-     (df['price']  > 1000).sum()
-      >>> 239
 
 #### There are just less than 0.5% listing's price is greater than $1,000
 
@@ -192,9 +179,7 @@ The processed data:
 <!-- SECTION 3 -->
 ## Create model
 #### Choosing model
-- Define models
-    
-    Try 4 regressor models
+- Try 4 regressor models
 
 <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/define_models.png" width='800' height='auto'></img>   
 
@@ -209,24 +194,27 @@ The processed data:
 - Look at correlations again
 ####    Before  VS  After
 <div align="center">
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v0.png" width=50%/>
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v1.png" width=50%/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v0.png" width="400"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v1.png" width="400"/>
 <div>
 
 
 - Evaluate models again
 
 The models performaced have improved!!
+
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/evaluate_models_v1.png' width='800' height='auto'></img>
 
 #### Try best hyperparameters
+
 <center class="half">
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Estimators.png" width="400"/>
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Trees.png" width="400"/>
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Features.png" width="400"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Estimators.png" width="300"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Trees.png" width="300"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Features.png" width="300"/>
 </center>
 
 #### create final model: Random Forest Regressor
+
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/final_model.png' width='800' height='auto'></img>
 
 #### Evaluate model
