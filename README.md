@@ -135,9 +135,9 @@ Shared room         1160
 
 #### Navigate "minimum_nights": required minimum nights stay
 <center class="half">
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/minimum_nights_distribution.png" width="300"/>
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/min_nights_describe.png" width="300"/>
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/min_nights_counts.png" width="300"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/minimum_nights_distribution.png" width="400"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/min_nights_describe.png" width="400"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/min_nights_counts.png" width="400"/>
 </center>
 
 #### Navigate "name": listing name
@@ -145,30 +145,19 @@ Shared room         1160
 
 
 Closer look at "price" : listing price
-<img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_distribution.png" width=32%/>
+<img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_distribution.png" width='800' height='auto'/>
 
 <div align="center">
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_describe.png" width=32%/>
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_counts.png" width=32%/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_describe.png" width="400"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_counts.png" width="400"/>
 </div>
 
-df.price.describe()
-count    48895.000000
-mean       152.720687
-std        240.154170
-min          0.000000
-25%         69.000000
-50%        106.000000
-75%        175.000000
-max      10000.000000
-Name: price, dtype: float64
-
-```python
+python
     (df['price'] > 2000).sum()
     86
     (df['price'] > 1000).sum()
     239
-```
+
 There are just less than 0.5% price is greater than $1,000
 
 
@@ -183,9 +172,14 @@ There are just less than 0.5% price is greater than $1,000
 
 <!-- SECTION 2 -->
 ## Feature engineering
+#### Fill Nan values using the specified method.
+#### Convert categorical variable into numeric variables(0/1).
+#### Drop some columns that have a low correlation with "price".
+     id, host_id, host_name ....
 
+The processed data:
 
-<img src=?raw=true' width='800' height='auto'></img>
+<img src=https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/processed_data.png?raw=true' width='800' height='auto'></img>
 
 
 
@@ -193,16 +187,27 @@ There are just less than 0.5% price is greater than $1,000
 <!-- SECTION 3 -->
 ## Create model
 #### Choosing model
-1)
+- Define models
+    Try 4 regressor models
+- Evaluate models
+#### Feature engineering again
+- Drop outliers
+- Convert text variable into numeric variables.
+    name -> nema_length
+- Evaluate models again
+
+The models performaced have improved!!
+<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/evaluate_models_v1.png' width='800' height='auto'></img>
 
 #### Try best hyperparameters
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Estimators.png?raw=true' width='800' height='auto'></img>
-#### create final model
+
+#### create final model: Random Forest Regressor
+<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/final_model.png' width='800' height='auto'></img>
 
 #### Evaluate model
 
-
-
+<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/evaluate_final.png' width='800' height='auto'></img>
 
 
 <!-- SECTION 4 -->
@@ -225,7 +230,7 @@ Feature Importances
 
 <!-- SECTION 5 -->
 ## Future Steps
-Next, I want to deep-dive the data.
+Next, I would like to search some related dataset.
 
 
 
