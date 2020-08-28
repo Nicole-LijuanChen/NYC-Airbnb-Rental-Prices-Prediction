@@ -69,9 +69,9 @@ When linking section titles with spaces in between, you must use a '-' (dash) to
 
 
 
-## Overview
+# Overview
 
-### Background & Motivation
+## Background & Motivation
 
 Since 2008, guests and hosts have used Airbnb to expand on traveling possibilities and present more unique, personalized way of experiencing the world.
 
@@ -83,33 +83,34 @@ When you set the rental price as a host, do you know which price will attract cu
 
 I would like to build a price prediction model to help guests and hosts compare and measure price.
 
-### Goal
+## Goal
 
 #### Predict NYC Airbnb Rental Prices
 
 
 <!-- SECTION 1 -->
-## EDA
-### Raw data
+# EDA
+## Raw data
 
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/raw_data.png' width='800' height='auto'></img>
 
- Source: kaggle.com
- This dataset describes the listing activity and metrics in NYC, NY for 2019.
- It has around 49,000 observations in it with 16 columns and it is a mix text, categorical and numeric values.
+Source: kaggle.com
+
+This dataset describes the listing activity and metrics in NYC, NY for 2019.
+It has around 49,000 observations in it with 16 columns and it is a mix text, categorical and numeric values.
 
 Scan the data infomation:
 
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/data_info.png' width='800' height='auto'></img>
 
-### Data understanding through visualizations
+## Data understanding through visualizations
 #### Get some intuitive sense of the relationships between numeric feature variables and Price
 
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/scatter_matrix.png?raw=true'></img>
 
 According the scatter matrix, there is not a strong linear relationship between the numeric features with price.
 
-#### Take a closer look at the data by navigate different features.
+### Take a closer look at the data by navigate different features.
 
 #### Navigate "neighbourhood_group" : NYC borough
 
@@ -138,6 +139,7 @@ Count frequency:
 Entire home/apt    25409; 
 Private room       22326; 
 Shared room         1160
+
 
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/map_of_room_type.png?raw=true'></img>
 
@@ -179,16 +181,16 @@ Mean price by neighbourhood_group
 
 
 <!-- SECTION 2 -->
-## Feature engineering
-#### - Fill Nan values using the specified method.
+# Feature engineering
+### - Fill Nan values using the specified method.
         According to data.info, there are 4 cloumns missing some values.
         lname,host_name,last_review and reviews_per_month
     
-#### - Convert categorical variable into numeric variables(0/1).
+### - Convert categorical variable into numeric variables(0/1).
         According to data understanding, there are 3 important categorical features:
         neighbourhood_group,neighbourhood,room_type
 
-#### - Drop some columns that have a low correlation with "price".
+### - Drop some columns that have a low correlation with "price".
      id, host_id, host_name ....
 
 The processed data:
@@ -199,8 +201,8 @@ The processed data:
 
 
 <!-- SECTION 3 -->
-## Modeling
-#### Define models
+# Modeling
+### Define models
 - Try 4 regressor models
 
 <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/define_models.png" width='800' height='auto'></img>   
@@ -210,14 +212,14 @@ The processed data:
 
 <img src=https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/evaluate_models_v0.png width='800' height='auto'></img>
 
-#### Feature engineering again
+### Feature engineering again
 - Drop outliers
     - price:
         The mean of price is 152.72, but the max price is 10000 that is not a reasonal price for me. 
         There are just less than 0.5% listing price is greater than $1,000.
         #### Drop the rows whose price is greater than 1000 and equal to 0
 
-    - minimum_nights:
+    - minimum_nights: required minimun nights stay
         The minimum night stay policy on Airbnb is the minimum number of nights that a guest can book a short-term vacation rental. 
         Short-term stays means less than 30 nights at a time.
         #### Replace the df['minimum_nights'] >30 with 30
@@ -227,7 +229,7 @@ The processed data:
 - Convert text variable into numeric variables
     - name -> neme_length
 - Look at correlations again
-####    Before  VS  After
+###    Before  VS  After
 <center class="half">
     <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v0.png" width="600"/><img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v1.png" width="600"/>
 <center>
@@ -240,7 +242,7 @@ The models performaced have improved!!
 
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/evaluate_models_v1.png' width='800' height='auto'></img>
 
-#### Try best hyperparameters
+### Try best hyperparameters
 
 
 <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Estimators.png" width="600"/>
@@ -248,22 +250,35 @@ The models performaced have improved!!
 <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Features.png" width="600"/>
 
 
-#### create final model: Random Forest Regressor
+### create final model: Random Forest Regressor
 
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/final_model.png' width='800' height='auto'></img>
 
-#### Evaluate model
+### Evaluate model
 
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/evaluate_final.png' width='800' height='auto'></img>
 
 
 <!-- SECTION 4 -->
 
-#### Bussiness insights
+# Bussiness insights
 
-Feature Importances
-<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/top_10_feature_importances.png?raw=true' width='800' height='auto'></img>
+Feature Importance
+<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/top_10_feature_importances.png?raw=true' width='600' height='auto'></img>
 
+
+### AS a guest:
+    - When you travel to New York, living in Brooklyn is a good choice.
+      Manhattan and Brooklyn are both close to New York’s commercial centers, and both have many listings. However, the average listing price in Brooklyn is 34% cheaper than those in Manhattan($118 VS S188).
+    - If cost saving is your main consideration, you might choose a Private room in the room type. 
+        Because the average listing price of an apartment is 2.3 times the price of a single room($195 VS S85). 
+        Moreover, although the average listing price of a shared room is cheapest, there are fewer listings(1160 outof 48895 ), and only $17 cheaper than a Private room.
+
+
+### AS a host:
+    - When you can't change the area where the house is, you could increase the listing price by increasing the total numbers of days listing is avaliable out of 365.
+    - Also, you could reduce the required minimun nights.
+    - Describe your house as specific as possible in the house name, which may help you attract customers. Such as room type, neighborhood, business district name.
 
 
 
@@ -272,7 +287,7 @@ Feature Importances
 
 
 <!-- SECTION 5 -->
-## Future Steps
+# Future Steps
 
 Next, I would like to search some related dataset, such as: the ratings, the reviews, numbers of booking. And then analyze the key fetures for customers to choose a listing.
 
