@@ -92,38 +92,39 @@ Source: kaggle.com
 <!-- SECTION 1 -->
 ## EDA
 ### Raw data
-<img src=''></img>
+<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/raw_data.png'></img>
 
-I search the data from kaggle.com. This dataset has around 49,000 observations in it with 16 columns and it is a mix text, categorical and numeric values.
+This dataset has around 49,000 observations in it with 16 columns and it is a mix text, categorical and numeric values.
 
 Scan the data to determine what I need.
 
 ### Data Analysis
-Get some intuitive sense of the relationships between numeric feature variables and Price
-<img src='image/correlation_matrix_v0.png'></img>
-
-
+#### Get some intuitive sense of the relationships between numeric feature variables and Price
 
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/scatter_matrix.png?raw=true'></img>
 
-Take a closer look at the data by navigate different features.
+According the scatter matrix, there is not a strong linear relationship between the numeric features with price.
 
-Navigate "neighbourhood_group" : NYC borough
+#### Take a closer look at the data by navigate different features.
 
-Manhattan        21661
-Brooklyn         20104
-Queens            5666
-Bronx             1091
-Staten Island      373
+#### Navigate "neighbourhood_group" : NYC borough
 
-<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/map_of_neighbourhood_group.png?raw=true'></img>
 
-<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/map_of_neighbourhood_group.png?raw=true'></img>
+Manhattan        21661 
+Brooklyn         20104 
+Queens            5666 
+Bronx             1091 
+Staten Island      373<img align="right" src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/map_of_neighbourhood_group.png'></img>
 
-Navigate "neighbourhood": NYC neighbourhood
-<img src=''></img>
+mean price by neighbourhood_group              
+<img src='?raw=ture'></img>
 
-Navigate "room_type": type of listing
+#### Navigate "neighbourhood": NYC neighbourhood
+<center class="half">
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/nbh_value_counts.png" width="300"/><img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/nbh_counts.png" width="300"/>
+</center>
+
+#### Navigate "room_type": type of listing
 Entire home/apt    25409
 Private room       22326
 Shared room         1160
@@ -132,14 +133,24 @@ Shared room         1160
 
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/mean_price_by_room_type.png?raw=true'></img>
 
-navigate "minimum_nights": required minimum nights stay
-<img src=''></img>
+#### Navigate "minimum_nights": required minimum nights stay
+<center class="half">
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/minimum_nights_distribution.png" width="300"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/min_nights_describe.png" width="300"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/min_nights_counts.png" width="300"/>
+</center>
 
-Navigate "name": listing name
+#### Navigate "name": listing name
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/name_wordcloud.png?raw=true'></img>
 
 
 Closer look at "price" : listing price
+<img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_distribution.png" width=32%/>
+
+<div align="center">
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_describe.png" width=32%/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_counts.png" width=32%/>
+</div>
 
 df.price.describe()
 count    48895.000000
