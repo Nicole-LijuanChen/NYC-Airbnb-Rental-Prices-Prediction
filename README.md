@@ -50,9 +50,9 @@ When linking section titles with spaces in between, you must use a '-' (dash) to
   - [Goal](#context)
 
 <!-- Section 1 -->
-- [EDA](#EDA-Exploratory Data Analysis)
+- [EDA](#context)
     - [Raw data](#visualizations)
-    - [Data Analysis](##context & #visualizations)
+    - [Data Analysis](#context)
 
 <!-- Section 2 -->
 - [Feature engineering](#visualizations)
@@ -60,7 +60,8 @@ When linking section titles with spaces in between, you must use a '-' (dash) to
 <!-- Section 3 -->
 - [Create model](#visualizations)
     - [Choosing model](#visualizations)
-    - [Try best hyperparameters](##visualizations)
+    - [Feature engineering agian](#visualizations)
+    - [Try best hyperparameters](#visualizations)
     - [create final model](#visualizations)
     - [Evaluate model](#visualizations)
 
@@ -99,19 +100,22 @@ Scan the data to determine what I need.
 
 ### Data Analysis
 Get some intuitive sense of the relationships between numeric feature variables and Price
-<img src=''></img>
+<img src='image/correlation_matrix_v0.png'></img>
 
 
 
-<img src='?raw=true'></img>
+<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/scatter_matrix.png?raw=true'></img>
 
-Take a closer look at the data by negative different features
+Take a closer look at the data by navigate different features.
+
 Navigate "neighbourhood_group" : NYC borough
+
 Manhattan        21661
 Brooklyn         20104
 Queens            5666
 Bronx             1091
 Staten Island      373
+
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/map_of_neighbourhood_group.png?raw=true'></img>
 
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/map_of_neighbourhood_group.png?raw=true'></img>
@@ -170,7 +174,7 @@ There are just less than 0.5% price is greater than $1,000
 ## Feature engineering
 
 
-<img src='https://github.com/Nicole-LijuanChen/Patterns-in-Amazon-customer-ratings/blob/master/images/ratings_count.png?raw=true' width='800' height='auto'></img>
+<img src=?raw=true' width='800' height='auto'></img>
 
 
 
@@ -195,6 +199,7 @@ There are just less than 0.5% price is greater than $1,000
 #### Interpret model
 
 Feature Importances
+
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/top_10_feature_importances.png?raw=true' width='800' height='auto'></img>
 
 
