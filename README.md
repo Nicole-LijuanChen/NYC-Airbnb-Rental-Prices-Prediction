@@ -184,7 +184,7 @@ Mean price by neighbourhood_group
 # Feature engineering
 ### - Fill Nan values using the specified method.
         According to data.info, there are 4 cloumns missing some values.
-        lname,host_name,last_review and reviews_per_month
+        name,host_name,last_review and reviews_per_month
     
 ### - Convert categorical variable into numeric variables(0/1).
         According to data understanding, there are 3 important categorical features:
@@ -231,7 +231,8 @@ The processed data:
 - Look at correlations again
 ###    Before  VS  After
 <center class="half">
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v0.png" width="600"/><img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v1.png" width="600"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v0.png" width="700"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v1.png" width="700"/>
 <center>
 
 
@@ -269,16 +270,29 @@ Feature Importance
 
 ### AS a guest:
     - When you travel to New York, living in Brooklyn is a good choice.
-      Manhattan and Brooklyn are both close to New York’s commercial centers, and both have many listings. However, the average listing price in Brooklyn is 34% cheaper than those in Manhattan($118 VS S188).
+      Manhattan and Brooklyn are both close to New York’s commercial centers, and both have many listings.
+      
+      However, the average listing price in Brooklyn is 34% cheaper than those in Manhattan($118 VS S188).
     - If cost saving is your main consideration, you might choose a Private room in the room type. 
         Because the average listing price of an apartment is 2.3 times the price of a single room($195 VS S85). 
-        Moreover, although the average listing price of a shared room is cheapest, there are fewer listings(1160 outof 48895 ), and only $17 cheaper than a Private room.
+        Moreover, although the average listing price of a shared room is cheapest, 
+        
+        there are fewer listings(1160 outof 48895 ), and only $17 cheaper than a Private room.
 
 
 ### AS a host:
-    - When you can't change the area where the house is, you could increase the listing price by increasing the total numbers of days listing is avaliable out of 365.
+    - When you can't change the area where the house is, you could 
+    
+    increase the listing price by increasing the total numbers of 
+    
+    days listing is avaliable out of 365.
+
     - Also, you could reduce the required minimun nights.
-    - Describe your house as specific as possible in the house name, which may help you attract customers. Such as room type, neighborhood, business district name.
+    - Describe your house as specific as possible in the house name, 
+
+      which may help you attract customers. Such as room type, 
+      
+      neighborhood, business district name.
 
 
 
