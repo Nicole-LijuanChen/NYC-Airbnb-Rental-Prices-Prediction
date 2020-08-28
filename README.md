@@ -79,7 +79,10 @@ Airbnb is a great tool for making travel easier, more pleasant and less expensiv
 
 
 When you are traveling and choosing a Airbnb listing, do you notice that there are too many choices and you don't know which listing price is reasonable?
+
 When you set the rental price as a host, do you know what price will attract customers and be profitable?
+
+<img src='' width='800' height='auto'></img>
 
 I would like to build a price prediction model to help guests and hosts compare and measure the listing price.
 
@@ -285,6 +288,7 @@ Feature Importance
        days listing is avaliable out of 365.
 
     - Also, you could reduce the required minimun nights.
+
     - Describe your listing as specific as possible in the listing name, 
        which may help you attract customers. Such as room type, 
        neighborhood, business district name.
