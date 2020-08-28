@@ -93,6 +93,48 @@ def rf_estimators_scores(num_estimator_list,X_train, y_train, X_test, y_test):
         test_errors_rf.append(mean_squared_error(y_pred_test, y_test))
     return train_errors_rf,test_errors_rf
 
+
+def rf_trees_scores(num_trees,X_train, y_train, X_test, y_test):
+    train_errors_rf = []
+    test_errors_rf = []
+    for num in num_trees:
+        rf = RandomForestRegressor(n_estimators = 300, max_depth=num, n_jobs=-1)
+        rf.fit(X_train, y_train)
+        y_pred_test =  rf.predict(X_test)
+        y_pred_train =  rf.predict(X_train)
+    
+        train_errors_rf.append(mean_squared_error(y_pred_train, y_train)) 
+        test_errors_rf.append(mean_squared_error(y_pred_test, y_test))
+    return train_errors_rf,test_errors_rf
+
+def rf_features_scores(num_features,X_train, y_train, X_test, y_test):
+    train_errors_rf = []
+    test_errors_rf = []
+    for num in num_features:
+        rf = RandomForestRegressor(n_estimators = 300, max_depth=15,max_features=num, n_jobs=-1)
+        rf.fit(X_train, y_train)
+        y_pred_test =  rf.predict(X_test)
+        y_pred_train =  rf.predict(X_train)
+    
+        train_errors_rf.append(mean_squared_error(y_pred_train, y_train)) 
+        test_errors_rf.append(mean_squared_error(y_pred_test, y_test))
+    return train_errors_rf,test_errors_rf
+
+
+# def rf_features_scores(num_features,X,y):
+#     train_r2_rf = []
+#     oob_r2_rf = []
+
+#     for num in num_features:
+#         rf = RandomForestRegressor(n_estimators = 300, max_depth=15, max_features=num, oob_score=True, n_jobs=-1)
+#         rf.fit(X, y)
+#         y_pred =  rf.predict(X)
+    
+#         train_r2_rf.append(r2_score(y, y_pred)) 
+#         oob_r2_rf.append(rf.oob_score_)
+#     return train_r2_rf, oob_r2_rf
+
+
 def stage_score_plot(estimator, X_train, y_train, X_test, y_test):
     '''
         Parameters: estimator: GradientBoostingRegressor or AdaBoostRegressor
