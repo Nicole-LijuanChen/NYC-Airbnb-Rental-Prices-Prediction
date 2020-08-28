@@ -71,18 +71,19 @@ When linking section titles with spaces in between, you must use a '-' (dash) to
 
 # Overview
 
-## Background & Motivation
+## Background 
 
 Since 2008, guests and hosts have used Airbnb to expand on traveling possibilities and present more unique, personalized way of experiencing the world.
 
 Airbnb is a great tool for making travel easier, more pleasant and less expensive. Rather than staying at a hotel and paying hotel prices, you can often pay substantially less for more space and usually have a better selection of locations in larger cities.
 
+## Motivation
 
-When you are traveling and choosing a Airbnb listing, do you notice that there are too many choices and you don't know which listing price is reasonable?
+When you are traveling and choosing a Airbnb listing, do you notice that there are too many choices and you don't know what listing price is reasonable?
 
 When you set the rental price as a host, do you know what price will attract customers and be profitable?
 
-<img src='' width='800' height='auto'></img>
+<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/NYC3.png' width='800' height='auto'></img>
 
 I would like to build a price prediction model to help guests and hosts compare and measure the listing price.
 
