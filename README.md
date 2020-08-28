@@ -145,18 +145,18 @@ Shared room         1160
 
 
 Closer look at "price" : listing price
+
 <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_distribution.png" width='800' height='auto'/>
 
-<div align="center">
+<center class="half">
     <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_describe.png" width="400"/>
     <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/price_counts.png" width="400"/>
-</div>
+</center>
 
-python
-    (df['price'] > 2000).sum()
-    86
-    (df['price'] > 1000).sum()
-    239
+     (df['price'] > 2000).sum()
+     >>> 86
+     (df['price']  > 1000).sum()
+      >>> 239
 
 There are just less than 0.5% price is greater than $1,000
 
@@ -172,14 +172,14 @@ There are just less than 0.5% price is greater than $1,000
 
 <!-- SECTION 2 -->
 ## Feature engineering
-#### Fill Nan values using the specified method.
-#### Convert categorical variable into numeric variables(0/1).
-#### Drop some columns that have a low correlation with "price".
+#### - Fill Nan values using the specified method.
+#### - Convert categorical variable into numeric variables(0/1).
+#### - Drop some columns that have a low correlation with "price".
      id, host_id, host_name ....
 
 The processed data:
 
-<img src=https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/processed_data.png?raw=true' width='800' height='auto'></img>
+<img src=https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/processed_data.png width='800' height='auto'></img>
 
 
 
@@ -192,15 +192,27 @@ The processed data:
 - Evaluate models
 #### Feature engineering again
 - Drop outliers
-- Convert text variable into numeric variables.
-    name -> nema_length
+- Convert text variable into numeric variables
+     name -> nema_length
+- Look at correlations again
+####    Before  VS  After
+<center class="half">
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v0.png" width="500"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v1.png" width="500"/>
+</center>
+
+
 - Evaluate models again
 
 The models performaced have improved!!
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/evaluate_models_v1.png' width='800' height='auto'></img>
 
 #### Try best hyperparameters
-<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Estimators.png?raw=true' width='800' height='auto'></img>
+<center class="half">
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Estimators.png" width="400"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Trees.png" width="400"/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/rf_MSE_vs_Num_Features.png" width="400"/>
+</center>
 
 #### create final model: Random Forest Regressor
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/final_model.png' width='800' height='auto'></img>
@@ -215,7 +227,6 @@ The models performaced have improved!!
 #### Interpret model
 
 Feature Importances
-
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/top_10_feature_importances.png?raw=true' width='800' height='auto'></img>
 
 
@@ -223,9 +234,6 @@ Feature Importances
 
 
 
-
-
-<img src='?raw=true'></img>
 
 
 <!-- SECTION 5 -->
