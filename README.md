@@ -110,13 +110,15 @@ According the scatter matrix, there is not a strong linear relationship between 
 #### Navigate "neighbourhood_group" : NYC borough
 
 
-Manhattan        21661 
-Brooklyn         20104 
-Queens            5666 
-Bronx             1091 
-Staten Island      373<img align="right" src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/map_of_neighbourhood_group.png'></img>
+Manhattan        21661;    
+Brooklyn         20104;  
+Queens            5666;  
+Bronx             1091; 
+Staten Island      373
 
-mean price by neighbourhood_group              
+<img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/map_of_neighbourhood_group.png'></img>
+
+Mean price by neighbourhood_group              
 <img src='?raw=ture'></img>
 
 #### Navigate "neighbourhood": NYC neighbourhood
@@ -125,9 +127,12 @@ mean price by neighbourhood_group
 </center>
 
 #### Navigate "room_type": type of listing
-Entire home/apt    25409
-Private room       22326
+
+Entire home/apt    25409; 
+Private room       22326; 
 Shared room         1160
+
+Mean price by neighbourhood_group  
 
 <img src='https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/map_of_room_type.png?raw=true'></img>
 
@@ -158,7 +163,7 @@ Closer look at "price" : listing price
      (df['price']  > 1000).sum()
       >>> 239
 
-There are just less than 0.5% price is greater than $1,000
+#### There are just less than 0.5% listing's price is greater than $1,000
 
 
 
@@ -179,7 +184,7 @@ There are just less than 0.5% price is greater than $1,000
 
 The processed data:
 
-<img src=https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/processed_data.png width='800' height='auto'></img>
+<img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/processed_data.png" width='800' height='auto'></img>
 
 
 
@@ -188,18 +193,25 @@ The processed data:
 ## Create model
 #### Choosing model
 - Define models
+    
     Try 4 regressor models
+
+<img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/define_models.png" width='800' height='auto'></img>   
+
+
 - Evaluate models
+
+<img src=https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/evaluate_models_v0.png width='800' height='auto'></img>
 #### Feature engineering again
 - Drop outliers
 - Convert text variable into numeric variables
      name -> nema_length
 - Look at correlations again
 ####    Before  VS  After
-<center class="half">
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v0.png" width="500"/>
-    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v1.png" width="500"/>
-</center>
+<div align="center">
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v0.png" width=50%/>
+    <img src="https://github.com/Nicole-LijuanChen/NYC-Airbnb-Rental-Prices-Prediction/blob/master/images/correlation_matrix_v1.png" width=50%/>
+<div>
 
 
 - Evaluate models again
